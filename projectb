@@ -1,0 +1,33 @@
+<script>
+
+let shift = Number(prompt("How much should we shift the letters by?"));
+let string = prompt("Enter some text you would like encrypted.");
+let newText = "";
+
+for (let i=0; i<string.length; i++){
+let code = string.charCodeAt(i)
+
+ if (code >= 65 && code <=90){
+	shift = shift % 26;
+	code += shift;
+    if (code >= 91) {
+      code = code - 26;
+    } else if (code <= 64){
+      code = code +26;
+    }
+   newText += String.fromCharCode(code);
+  } else if (code >= 97 && code <=122){
+	shift = shift % 26;
+	code += shift;
+    if (code >= 122) {
+      code = code - 26;
+    } else if (code <= 96){
+      code = code +26; }
+    newText += String.fromCharCode(code);
+  } else {
+     newText += string[i];	
+  } 
+}
+alert (newText);
+
+</script>
