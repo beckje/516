@@ -1,0 +1,7 @@
+let myString = prompt ("Enter a sentence.");
+
+let replacedString = myString.replace (/([aeiouy]+)/gi, "aig$1");
+
+let replacedString2 = replacedString.replace(/([aeiouy][bcdfghjklmnpqrstvwxz]+)(aige)\b/gi, "$1e");
+
+alert(replacedString2);
