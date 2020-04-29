@@ -1,0 +1,58 @@
+<script>
+
+let score = {"at": 0, "from": 0, "with": 0, "between": 0,"through": 0};
+let randomInteger =0;
+let worstPrep ="at";
+
+const correctBank = {
+	"at": ["Class starts at 2pm.", "I am at home.", "She is at the school.", "We eat lunch at noon.", "Let's meet at the park."
+		], 
+	"from": ["I got a gift from my mom.", "My roommate is from Japan.", "She began to walk away from him.", "Has the train from Chicago arrived?", "The heat from the fire feels nice."
+		],
+	"with": ["He lives with his parents.", "I'm eating a salad with ranch dressing.", "I'm coming down with a cold.", "Cut it with scissors.", "I play soccer with my friends."
+        ],
+	"between": ["America is between Mexico and Canada.", "Don't eat between meals.", "There are some bad feelings between them.", "This is just between you and me.", "There is a thin line between right and wrong."
+	    ], 
+	"through":["She went through the door.", "The path led us through the forest.", "He could see the house through the mist.", "Drive through the open gate.", "I'm halfway through reading her book."
+		],
+	};
+
+const blankAnswerBank = {
+	"at": ["Class starts __ 2pm.", "I am __ home.", "She is __ the school.", "We eat lunch __ noon.", "Let's meet __ the park."
+		], 
+	"from": ["I got a gift __ my mom.", "My roommate is __ Japan.", "She began to walk away __ him.", "Has the train __ Chicago arrived?", "The heat __ the fire feels nice."
+		],
+	"with": ["He lives __ his parents.", "I'm eating a salad __ ranch dressing.", "I'm coming down __ a cold.", "Cut it __ scissors.", "I play soccer __ my friends."
+        ],
+	"between": ["America is __ Mexico and Canada.", "Don't eat __ meals.", "There are some bad feelings __ them.", "This is just __ you and me.", "There is a thin line __ right and wrong."
+	    ], 
+	"through":["She went __ the door.", "The path led us __ the forest.", "He could see the house __ the mist.", "Drive __ the open gate.", "I'm halfway __ reading her book."
+		],
+	};
+
+
+while (true) {
+	
+randomInteger= Math.floor(Math.random()*5);
+
+answer=prompt(blankAnswerBank[worstPrep][randomInteger]);
+
+if (answer == worstPrep) {
+  alert ("Correct!");
+  score[worstPrep]=score[worstPrep]+1;
+  }
+
+else {
+  alert (correctBank[worstPrep][randomInteger]);
+  score[worstPrep]=score[worstPrep]-1;
+  }
+
+for (let itemJustQuizzed in score) {
+ 
+    if (score[worstPrep] > score[itemJustQuizzed]) {
+      worstPrep = itemJustQuizzed;
+    }
+  }
+
+}
+</script>
