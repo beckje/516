@@ -1,0 +1,63 @@
+<p>Input:<br><textarea id="input" rows="10" cols="80"></textarea>
+<p><button onclick="process()">Process</button>
+<p>Output:<br><textarea id="output" rows="10" cols="80"></textarea>
+
+<script>
+// I used a lot of Chris and Evgeny's ideas from class on 4/20/2020
+var numberOfWords = {};
+var dictionary = [];
+// this function will be invoked when the button is clicked
+function process() {
+
+  var x = document.getElementById("input").value;
+	var allWords = x;
+	// get input text, put it in the variable "x"
+
+	var foundWords = allWords.split(/\W+/);
+	// finds words by dividing at non alphabet letters
+
+	var type = 0;
+	var token = 0;
+	for (var i =0; i < foundWords.length; i++){
+		var word = foundWords[i].toUpperCase();
+		// puts all letters in uppercase
+
+		if (!/\d+/.test(word)) {
+			if (numberOfWords[word] == undefined){
+				numberOfWords[word] = 1;
+				// test to see if word already exists in array
+				dictionary.push(word);
+				type ++;
+				token ++;
+				// adds a new word to dictionary array and adds one more type and token
+			} else {
+				numberOfWords[word] = numberOfWords[word] +1;
+				token ++;
+				//add to the number count of word if word is already in array
+		}
+	}
+}
+	dictionary.sort (compare);
+	function compare (x, y){
+		return numberOfWords[y] - numberOfWords[x];
+		//to sort words by frequency
+	}
+
+var typeTokenRatio = type / token;
+
+	var y = "Types: " + type + ". Tokens: " + token + ". Type Token Ratio: " + typeTokenRatio.toFixed(2) +
+			//the toFixed(2) makes it only go to the second decimal point
+			". Words in order by frequency: " + "\n" + "\n";
+			//two spaces to separate information from list of word frequencies
+
+	for (var i = 0; i < dictionary.length; i++){
+		var displayList = dictionary[i];
+		y += displayList + " " + numberOfWords[displayList] +"\n";
+		//prints out whole list of words with a space between the word and number of words, each word on its own line
+
+	}
+ document.getElementById("output").value = y;
+}
+
+</script>
+</p>
